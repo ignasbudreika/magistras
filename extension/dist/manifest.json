@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Estimity",
+  "description": "Estimate your Ethereum smart contract costs in real time",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "estimity.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

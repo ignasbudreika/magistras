@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- import inter font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-DrJ0udwq.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DGuLPXkd.css">
+</head>
+
+<body>
+
+  <div class="slideshow-container">
+
+    <div class="slide" id="networkSlide">
+
+      <h3>
+        Ethereum network configuration
+      </h3>
+
+      <div class="dropdown-container">
+        <label style="width: 30%">Network</label>
+        <select id="networkDropdown">
+          <option value="Sepolia">Sepolia</option>
+          <option value="Ethereum Mainnet">Ethereum Mainnet</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="width: 30%">JSON RPC provider URL</label>
+        <input style="width: 60%" class="input" placeholder="e.g. https://sepolia.infura.io/v3/{your_api_key}"
+          id="jsonRPCURL" title="URL to JSON RPC provider HTTP API for selected network" />
+      </div>
+
+      <div>
+        <label style="width: 30%">Gas price (optional)</label>
+        <input style="width: 60%" class="input" placeholder="1.01" id="gasPriceGwei" title="Gas price in gwei" />
+      </div>
+
+    </div>
+
+    <div class="slide" id="onChainContractSlide">
+
+      <h3>
+        On-chain solution contract configuration
+      </h3>
+      <div class="onChainInputContainer">
+        <div>
+          <label>Contract address</label>
+          <input class=" input" placeholder="0x0000000000000000000000000000000000000000"
+            title="Address of the on-chain solution contract" id="onChainContractAddress" />
+        </div>
+        <div>
+          <label>Caller address</label>
+          <input class="input" placeholder="0x0000000000000000000000000000000000000000"
+            title="Address of function caller" id="onChainContractCallerAddress" />
+        </div>
+        <div>
+          <label>Function signature</label>
+          <input class="input" placeholder="functionName(argumentType1,...)"
+            title="Signature of the calculation function" id="onChainContractFunctionSignature" />
+        </div>
+        <div>
+          <label>Function arguments</label>
+          <input class="input" placeholder="[argument1, ...]"
+            title="Input data for calculation function in JSON array format" id="onChainContractFunctionInputData" />
+        </div>
+      </div>
+
+    </div>
+
+    <div class="slide" id="offChainContractSlide">
+
+      <h3>
+        Off-chain solution contract configuration
+      </h3>
+      <div class="offChainInputContainer">
+        <div>
+          <label>Contract address</label>
+          <input class="input" placeholder="0x0000000000000000000000000000000000000000"
+            title="Address of the off-chain solution contract" id="offChainContractAddress" />
+        </div>
+        <div>
+          <label>Caller address</label>
+          <input class="input" placeholder="0x0000000000000000000000000000000000000000"
+            title="Address of function caller" id="offChainContractCallerAddress" />
+        </div>
+        <div>
+          <label>Function signature</label>
+          <input class="input" placeholder="functionName(argumentType1,...)"
+            title="Signature of the calculation function" id="offChainContractFunctionSignature" />
+        </div>
+        <div>
+          <label>Function arguments</label>
+          <input class="input" placeholder="[argument1, ...]"
+            title="Input data for calculation function in JSON array format" id="offChainContractFunctionInputData" />
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="slide" id="offChainChainlinkFunctionsSlide">
+
+      <h3>
+        Off-chain solution Chainlink Functions config
+      </h3>
+      <div>
+        <label>Subscription ID</label>
+        <input class="input" placeholder="1" title="Subscription from which LINK token is debited for the request"
+          id="subscriptionId" />
+      </div>
+      <div>
+        <label>Callback gas limit</label>
+        <input class="input" placeholder="300000" title="Gas limit for the request fulfilment callback function call"
+          id="callbackGasLimit" />
+      </div>
+
+    </div>
+
+    <div class="slide" id="resultsSlide">
+
+      <h3>Results</h3>
+
+      <table>
+        <tr>
+          <th>Solution</th>
+          <th>Cost (USD)</th>
+        </tr>
+        <tr>
+          <td>On-chain</td>
+          <td id="onChainCost">-</td>
+        </tr>
+        <tr>
+          <td>Off-chain</td>
+          <td id="offChainCost">-</td>
+        </tr>
+      </table>
+      <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center;">
+        <button class="button" id="estimateButton" style="width: 30%">
+          ESTIMATE
+        </button>
+      </div>
+
+      <div class="progress" id="progressAlert">Estimating...</div>
+      <div class="alert" id="errorAlert"></div>
+      <div class="success" id="successAlert">Costs estimated successfully!</div>
+
+    </div>
+
+  </div>
+
+  <div style="text-align:center">
+    <span class="dot" data-slide="1" id="networkDot"></span>
+    <span class="dot" data-slide="2" id="onChainContractDot"></span>
+    <span class="dot" data-slide="3" id="offChainContractDot"></span>
+    <span class="dot" data-slide="4" id="offChainFunctionsDot"></span>
+    <span class="dot" data-slide="5"></span>
+  </div>
+
+</body>
+
+</html>
